@@ -213,3 +213,16 @@
 // console.log(banana);
 
 // ===============================
+
+// const students = [
+//     { name: 'Манго', score: 83, courses: ['математика', 'физика'] },
+//     { name: 'Поли', score: 59, courses: ['информатика', 'математика'] },
+//     { name: 'Аякс', score: 37, courses: ['физика', 'биология'] },
+//     { name: 'Киви', score: 94, courses: ['литература', 'информатика'] },
+// ];
+// const uniqueSortedCourses = students
+//     .flatMap(student => student.courses)
+//     .filter((course, index, array) => array.indexOf(course) === index)
+//     .sort((a, b) => a.localeCompare(b));
+
+// console.log(uniqueSortedCourses); // ['биология', 'информатика', 'литература', 'математика', 'физика']
