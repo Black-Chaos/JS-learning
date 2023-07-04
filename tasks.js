@@ -282,3 +282,276 @@
 // console.log(tagStats(allTags(tweets)));
 
 // ======================================
+
+// Напиши клас User який створює об'єкт із властивостями login та email.
+// Оголоси приватні властивості #login та #email, доступ до яких зроби через гетер та сетер login та email.
+
+// class User {
+//     #login;
+//     #email;
+//     constructor({login, email}) {
+//         this.#login = login;
+//         this.#email = email;
+//     }
+
+//     get login() {return this.#login}
+//     set login(newLogin) { this.#login = newLogin }
+
+//     get email() { return this.#email }
+//     set email(newEmail) {this.#email = newEmail}
+// }
+
+// const mango = new User({
+//   login: 'Mango',
+//   email: 'mango@dog.woof',
+// });
+
+// console.log(mango.login); // Mango
+// mango.login = 'Mangodoge';
+// console.log(mango.login); // Mangodoge
+
+// const poly = new User({
+//   login: 'Poly',
+//   email: 'poly@mail.com',
+// });
+
+// console.log(poly.login); // Poly
+// poly.login = 'Polycutie';
+// console.log(poly.login); // Polycutie
+
+// -------------------------------------
+
+// Напиши клас Blogger для створення об'єкта блогера з наступними властивостями:
+
+// email - пошта, рядок
+// age - вік, число
+// numberOfPosts - кількість постів, число
+// topics - масив тем на яких спеціалізується блогер
+// Клас чекає один параметр - об'єкт налаштувань з однойменними властивостями.
+
+// Додай метод getInfo(), який, повертає рядок: User ${пошта} is ${вік} years old and has ${кількість постів} posts.
+
+// Додай метод updatePostCount(value), який у параметрі value приймає кількість постів, які потрібно додати користувачеві.
+
+// class Blogger extends User {
+//     constructor({ login, email, age, numberOfPosts, topics }) {
+//         super({ login, email });
+//         this.age = age;
+//         this.numberOfPosts = numberOfPosts;
+//         this.topics = topics;
+//     }
+//     getInfo() {
+//         return `Blogger ${this.email} is ${this.age} years old and has ${this.numberOfPosts} posts`
+//     }
+//     updatePostCount(value) {
+//         this.numberOfPosts += value
+//     }
+// }
+
+// const mango = new Blogger({
+//     login: 'Mango',
+//   email: 'mango@mail.com',
+//   age: 24,
+//   numberOfPosts: 20,
+//   topics: ['tech', 'cooking'],
+// });
+// console.log(mango);
+// console.log(mango.getInfo()); // Blogger mango@mail.com is 24 years old and has 20 posts
+// mango.updatePostCount(5);
+// console.log(mango.getInfo()); // Blogger mango@mail.com is 24 years old and has 25 posts
+
+// const poly = new Blogger({
+//     login: 'Poly',
+//   email: 'poly@mail.com',
+//   age: 19,
+//   numberOfPosts: 17,
+//   topics: ['sports', 'gaming', 'health'],
+// });
+// console.log(poly.getInfo()); // User poly@mail.com is 19 years old and has 17 posts
+// poly.updatePostCount(4);
+// console.log(poly.getInfo()); // User poly@mail.com is 19 years old and has 21 posts
+
+// ---------------------------------------
+
+// Напиши клас Storage який створює об'єкти для керування складом товарів.
+// При виклику отримуватиме один аргумент - початковий масив товарів і записуватиме його властивість items.
+
+// Додай методи класу:
+
+// getItems() - повертає масив товарів.
+// addItem(item) - отримує новий товар і додає його до поточних.
+//     removeItem(item) - отримує товар і, якщо він є, видаляє його з поточних.
+
+// class Storage {
+//     constructor(items) {
+//         this.items = items;
+//     }
+
+//     getItems() {return this.items}
+//     addItem(item) { this.items.push(item) }
+//     removeItem(item) {
+//         const getIndex = this.items.includes(item);
+//         if (getIndex !== -1) {
+//             this.items.splice(getIndex, 1)
+//         }
+//     }
+// }
+
+// const storage = new Storage(['🍎', '🍋', '🍇', '🍑']);
+
+// const items = storage.getItems();
+// console.table(items); // [ '🍎', '🍋', '🍇', '🍑' ]
+
+// storage.addItem('🍌');
+// console.table(storage.items); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
+
+// storage.removeItem('🍋');
+// console.table(storage.items); // [ '🍎', '🍇', '🍑', '🍌' ]
+
+// ------------------------------------------
+
+// Напиши клас Notes який керує колекцією нотаток у властивості items.
+// Замітка це об'єкт із властивостями text та priority.
+// Додай класу статичну властивість Priority, у якому зберігатиметься об'єкт із пріоритетами.
+
+// class Notes {
+//     static Priority = {
+//         LOW: 'low',
+//         NORMAL: 'normal',
+//         HIGH: 'high'
+//     };
+
+//     constructor(items) {
+//         this.items = items;
+//     }
+//     addNote({ text, priority }) {
+//         this.items.push({
+//             text,
+//             priority: Notes.Priority[priority],
+//         })
+//     }
+//     removeNote(note) {
+//         const getIndex = this.items.findIndex(item => item.text === note);
+//         if (getIndex !== -1) {
+//             this.items.splice(getIndex, 1)
+//         }
+//     }
+//     updateNote(note, priority) {
+//         this.items.forEach(el => {
+//             if (el.text === note) {
+//                 el.priority = Notes.Priority[priority];
+//             }
+//         });
+//     }
+// }
+
+// const myNotes = new Notes([]);
+
+// myNotes.addNote({ text: 'Моя перша замітка', priority: 'LOW' });
+// console.log(myNotes.items);
+
+// myNotes.addNote({
+//   text: 'Моя друга замітка',
+//   priority: 'NORMAL',
+// });
+// console.log(myNotes.items);
+
+// myNotes.removeNote('Моя перша замітка');
+// console.log(myNotes.items);
+
+// myNotes.updateNote('Моя друга замітка', 'HIGH');
+// console.log(myNotes.items);
+
+// class Toggle {
+//     constructor(settings) {
+//         this.on = settings?.isOpen || false;
+//     }
+//     toggle() {this.on = !this.on}
+// }
+
+// const firstToggle = new Toggle({ isOpen: true });
+// console.group('firstToggle');
+// console.log(firstToggle.on);
+// firstToggle.toggle();
+// console.log(firstToggle.on);
+// console.groupEnd('firstToggle');
+
+// const secondToggle = new Toggle();
+// console.group('secondToggle');
+// console.log(secondToggle.on);
+// secondToggle.toggle();
+// console.log(secondToggle.on);
+// console.groupEnd('secondToggle');
+
+// ==================================
+
+// Реалізувати пошук товарів по частковій або повній назві.
+// Зробити так, щоб частота виконання функції обробника події була 500ms.
+// При рендері списку знайдених товарів додати кнопку "Додати у кошик",
+// при натисканні на яку товари будуть рендеритись в <ul id="cartItemsContainer"></ul>
+// Реалізувати можливість видалення цих товарів з кошика.
+
+// <div class="container">
+//     <input type="text" id="searchInput" placeholder="Введіть назву товару" />
+//     <ul id="itemsContainer"></ul>
+//     <div class="cart">
+//         <h2>Кошик</h2>
+//         <ul id="cartItemsContainer"></ul>
+//     </div>
+// </div>;
+// <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>;
+
+
+// const products = [
+//     'телевізор_Samsung',
+//     'телевізор_LG',
+//     'телевізор_Xiaomi',
+//     'телефон_Samsung',
+//     'телефон_Apple',
+//     'телефон_Xiaomi',
+//     'планшет_Samsung',
+//     'планшет_Apple',
+//     'планшет_Xiaomi',
+//     'ноутбук_ASUS',
+//     'ноутбук_Apple',
+//     'ноутбук_Lenovo',
+// ];
+
+// const input = document.getElementById('searchInput');
+// const list = document.getElementById('itemsContainer');
+// const listCart = document.getElementById('cartItemsContainer');
+
+// list.addEventListener('click', onClick);
+// function onClick(e) {
+//     if (e.target.nodeName !== 'BUTTON') return;
+//     // listCart.append(e.target.parentNode)
+//     const item = document.createElement('li');
+//     const btn = document.createElement('button')
+//         btn.addEventListener('click', e => e.target.parentNode.remove());
+//     const text = document.createElement('p');
+//     btn.textContent = 'Видалити';
+//     text.textContent = e.target.previousElementSibling.textContent;
+//     item.append(text, btn);
+//     listCart.append(item)
+// }
+
+// input.addEventListener('input', _.throttle(checkList, 500));
+// function checkList(e) {
+//     list.innerHTML = '';
+//     const value = e.target.value.toLowerCase();
+//     if (!value) return;
+//     const items = products.filter(el => el.toLowerCase().includes(value));
+//     list.append(...murkup(items));
+// }
+
+// function murkup(items) {
+//     return items.map(el => {
+//         const item = document.createElement('li');
+//         const btn = document.createElement('button');
+//         const text = document.createElement('p');
+//         btn.textContent = 'Додати у кошик';
+//         text.textContent = el;
+//         item.append(text, btn);
+//         return item;
+//     });
+// }
